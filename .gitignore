@@ -1,2 +1,4 @@
 movie_env/
 *.pyc
+ngrok
+*.json
