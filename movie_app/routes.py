@@ -7,8 +7,8 @@ import json
 import mysql.connector
 from movie_app import app
 
-OMDB_API_KEY=""
-DIALOGFLOW_PROJECT_ID=""
+OMDB_API_KEY="e5c107d2"
+DIALOGFLOW_PROJECT_ID="helloworld-597d8"
 GOOGLE_APP_CREDENTIALS="HelloWorld-bb6a78d1c91d.json"
 
 def getAverageRating(titles_list):

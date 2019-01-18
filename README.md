@@ -10,7 +10,7 @@ As of now, the bot is capable of answering the most basic questions about partic
 Partial implementation of anomaly-based conversation strategy. The strategy involves finding anomalies in statistics related to the actors/directors of a movie queried by the user and commenting on the same. The statistics are currently related to the imdb ratings of all movies involving a particular actor (or a set of them). Anomalies open up interesting pathways for starting conversations. 
 
 ## Technology/Data
-Data: The dataset used is the IMDb dataset which has been scraped and arranged into MySQL database tables.
+Data: The dataset used is the IMDb dataset which has been scraped and arranged into MySQL database tables. dataExtractor.py is the script that contains code to extract relevant data from imdb tsv files and load them into the db.
 
 NLP Interface: Dialogflow API + Frontend hosted on the Dialogflow 
 
