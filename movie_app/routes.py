@@ -5,6 +5,7 @@ import pprint
 import requests
 import json
 import mysql.connector
+import tmdb
 from movie_app import app
 
 OMDB_API_KEY="e5c107d2"
@@ -110,27 +111,26 @@ def get_movie_detail():
 	pp = pprint.PrettyPrinter(indent=4)
 	pp.pprint(data)
 	movie = data['queryResult']['parameters']['movie']
-	print(movie)
-	api_key = OMDB_API_KEY
+	# api_key = OMDB_API_KEY
 
-	movie_detail = requests.get('http://www.omdbapi.com/?t={0}&apikey={1}'.format(movie, api_key)).content
-	movie_detail = json.loads(movie_detail)
+	# movie_detail = requests.get('http://www.omdbapi.com/?t={0}&apikey={1}'.format(movie, api_key)).content
+	# movie_detail = json.loads(movie_detail)
 
-	imdb_id = movie_detail['imdbID']
-	print "IMDB = " + imdb_id
-	final_statement = extract_actor_anomaly(imdb_id)
+	# imdb_id = movie_detail['imdbID']
+	# print "IMDB = " + imdb_id
+	# final_statement = extract_actor_anomaly(imdb_id)
 	
-	pp.pprint(movie_detail)
-	response = """
-		Title: {0}\n
-		Released: {1}\n
-		Actors: {2}\n
-		Plot: {3}
-	""".format(movie_detail['Title'], movie_detail['Released'], movie_detail['Actors'], movie_detail['Plot'])
-	response = """ *Anomaly comment* : {7} *-----* '{0}' is a {5} language movie that was released in {6} on {1}. It was directed by '{3}', starring '{2}'
-	 and the plot is as follows: '{4}'.""".format(movie_detail['Title'], movie_detail['Released'], movie_detail['Actors'], movie_detail['Director'],movie_detail['Plot'],movie_detail['Language'],movie_detail['Country'],final_statement)
+	# pp.pprint(movie_detail)
+	# response = """
+	# 	Title: {0}\n
+	# 	Released: {1}\n
+	# 	Actors: {2}\n
+	# 	Plot: {3}
+	# """.format(movie_detail['Title'], movie_detail['Released'], movie_detail['Actors'], movie_detail['Plot'])
+	# response = """ *Anomaly comment* : {7} *-----* '{0}' is a {5} language movie that was released in {6} on {1}. It was directed by '{3}', starring '{2}'
+	#  and the plot is as follows: '{4}'.""".format(movie_detail['Title'], movie_detail['Released'], movie_detail['Actors'], movie_detail['Director'],movie_detail['Plot'],movie_detail['Language'],movie_detail['Country'],final_statement)
 	reply = {
-		"fulfillmentText": response,
+		"fulfillmentText": tmdb.searchForMovie(movie),
 	}
 
 	return jsonify(reply)
