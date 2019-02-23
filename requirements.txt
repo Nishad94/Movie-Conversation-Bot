@@ -5,7 +5,7 @@ Click==7.0
 dialogflow==0.4.0
 enum34==1.1.6
 Flask==1.0.2
-futures==3.2.0
+futures
 google-api-core==1.5.2
 google-auth==1.6.1
 googleapis-common-protos==1.5.5
